@@ -1,0 +1,40 @@
+:root {
+  --cream: #eee4da;
+  --sand: #d8c4ac;
+  --dusty-pink: #c8a49f;
+  --burgundy: #4d0e13;
+  --deep-brown: #211816;
+  --warm-white: #faf8f5;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--warm-white);
+  color: var(--deep-brown);
+  font-family: var(--font-manrope), Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
