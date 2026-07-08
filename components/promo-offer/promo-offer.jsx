@@ -35,6 +35,8 @@ function formatNumber(number) {
 }
 
 export default function PromoOffer() {
+  const [mounted, setMounted] = useState(false);
+
   const endDate = useMemo(() => {
     const date = new Date();
     date.setDate(date.getDate() + 6);
@@ -43,11 +45,18 @@ export default function PromoOffer() {
     return date;
   }, []);
 
-  const [remainingTime, setRemainingTime] = useState(() =>
-    getRemainingTime(endDate)
-  );
+  const [remainingTime, setRemainingTime] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    expired: false,
+  });
 
   useEffect(() => {
+    setMounted(true);
+    setRemainingTime(getRemainingTime(endDate));
+
     const timer = window.setInterval(() => {
       setRemainingTime(getRemainingTime(endDate));
     }, 1000);
@@ -104,8 +113,8 @@ export default function PromoOffer() {
           </div>
         </div>
 
-        <div className={styles.contentSide}> data-aos="fade-up"
-          <div className={styles.content} data-aos="fade-up"s>
+        <div className={styles.contentSide} data-aos="fade-up"> 
+          <div className={styles.content} data-aos="fade-up">
             <div className={styles.eyebrowRow}>
               <span className={styles.eyebrow}>Offre privée</span>
               <span className={styles.eyebrowLine} />
@@ -131,9 +140,9 @@ export default function PromoOffer() {
               {countdownItems.map((item, index) => (
                 <div className={styles.countdownGroup} key={item.label}>
                   <div className={styles.countdownItem}>
-                    <span className={styles.countdownValue}>
-                      {formatNumber(item.value)}
-                    </span>
+                  <span className={styles.countdownValue}>
+  {mounted ? formatNumber(item.value) : "--"}
+</span>
 
                     <span className={styles.countdownLabel}>{item.label}</span>
                   </div>
