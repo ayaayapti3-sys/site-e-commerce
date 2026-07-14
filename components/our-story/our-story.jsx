@@ -38,7 +38,7 @@ export default function OurStory() {
             </div>
           </div>
 
-          <div className={styles.secondaryImage} data-aos="fade-up"s>
+          <div className={styles.secondaryImage} data-aos="fade-up">
             <Image
               src="/images/story/story-detail.png"
               alt="Détail d’un sac en cuir Maison Élyra"

@@ -1,0 +1,679 @@
+.page {
+  --background: #f8f4ef;
+  --surface: #fffdf9;
+  --text: #281f1c;
+  --muted: #897b75;
+  --border: rgba(52, 37, 31, 0.15);
+  --burgundy: #a61225;
+
+  min-height: 100vh;
+  padding-top: 90px;
+  background: var(--background);
+  color: var(--text);
+}
+
+.heading {
+  padding: 70px 5% 55px;
+  border-bottom: 1px solid var(--border);
+}
+
+.headingInner {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 55px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 15px;
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.heading h1 {
+  max-width: 850px;
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(42px, 6vw, 84px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.heading p {
+  max-width: 570px;
+  margin: 25px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.checkoutContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 70px;
+  width: min(1320px, 90%);
+  margin: 0 auto;
+  padding: 70px 0 100px;
+}
+
+.formColumn {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.formSection {
+  padding: 0 0 55px;
+  margin-bottom: 55px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+.sectionNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  font-family: "Bodoni Moda", serif;
+  font-size: 13px;
+}
+
+.sectionHeader h2 {
+  margin: 0 0 8px;
+  font-family: "Bodoni Moda", serif;
+  font-size: 29px;
+  font-weight: 400;
+}
+
+.sectionHeader p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.fieldsRow {
+  display: flex;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.field label {
+  margin-bottom: 10px;
+  color: #514640;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.field label span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  outline: none;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.field input,
+.field select {
+  height: 56px;
+  padding: 0 17px;
+}
+
+.field textarea {
+  min-height: 120px;
+  padding: 17px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--text);
+  background: #fff;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #a69b96;
+}
+
+.paymentMethods {
+  display: flex;
+  gap: 16px;
+}
+
+.paymentCard {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  gap: 15px;
+  min-height: 115px;
+  padding: 25px 22px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.paymentCard input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.paymentCardActive {
+  border-color: var(--burgundy);
+  background: #fffafa;
+}
+
+.radioMark {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #9d918b;
+  border-radius: 50%;
+}
+
+.paymentCardActive .radioMark {
+  border: 4px solid var(--burgundy);
+}
+
+.paymentContent {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.paymentContent strong {
+  font-family: "Bodoni Moda", serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.paymentContent small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.cardNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  margin-top: 15px;
+  background: #eee8e1;
+}
+
+.cardNotice p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  cursor: pointer;
+}
+
+.terms input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--burgundy);
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 68px;
+  padding: 0 28px;
+  border: 0;
+  background: var(--burgundy);
+  color: white;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #89101f;
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.reassurance {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 24px;
+}
+
+.reassurance span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.summaryColumn {
+  position: sticky;
+  top: 115px;
+  flex: 0 0 430px;
+  width: 430px;
+}
+
+.summaryCard {
+  padding: 35px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 27px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summaryHeader h2 {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.itemCount {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.products {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.productImage {
+  position: relative;
+  flex: 0 0 82px;
+  width: 82px;
+  height: 102px;
+  overflow: visible;
+  background: #eee6dc;
+}
+
+.productImage img {
+  object-fit: cover;
+}
+
+.productImage > span {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: var(--burgundy);
+  color: white;
+  font-size: 9px;
+}
+
+.productInfo {
+  min-width: 0;
+}
+
+.productInfo small {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--burgundy);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.productInfo h3 {
+  margin: 0 0 13px;
+  font-family: "Bodoni Moda", serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.productInfo p {
+  margin: 0;
+  color: #514640;
+  font-size: 11px;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.prices > div,
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.prices span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.prices strong {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.total {
+  padding: 27px 0;
+}
+
+.total > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.total span {
+  font-family: "Bodoni Moda", serif;
+  font-size: 23px;
+}
+
+.total small {
+  color: var(--muted);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.total strong {
+  font-family: "Bodoni Moda", serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.shippingMessage {
+  padding: 13px 15px;
+  margin-bottom: 22px;
+  background: #f1e9e2;
+  color: #675952;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.summaryFooter {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.summaryFooter p {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.emptyCart {
+  padding: 45px 0;
+  text-align: center;
+}
+
+.emptyCart p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.emptyCart a {
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.successPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 130px 5% 80px;
+  background: #f8f4ef;
+}
+
+.successCard {
+  width: min(630px, 100%);
+  padding: 70px 55px;
+  border: 1px solid rgba(52, 37, 31, 0.15);
+  background: #fffdf9;
+  text-align: center;
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 28px;
+  border: 1px solid #a61225;
+  border-radius: 50%;
+  color: #a61225;
+}
+
+.successCard h1 {
+  margin: 0 0 20px;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(38px, 6vw, 60px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.successCard > p {
+  max-width: 470px;
+  margin: 0 auto 32px;
+  color: #897b75;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.successReference {
+  display: flex;
+  justify-content: space-between;
+  padding: 19px 0;
+  margin-bottom: 28px;
+  border-top: 1px solid rgba(52, 37, 31, 0.15);
+  border-bottom: 1px solid rgba(52, 37, 31, 0.15);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.homeButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 62px;
+  padding: 0 24px;
+  background: #a61225;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1050px) {
+  .checkoutContainer {
+    flex-direction: column;
+  }
+
+  .summaryColumn {
+    position: static;
+    order: -1;
+    flex: none;
+    width: 100%;
+  }
+
+  .summaryCard {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding-top: 72px;
+  }
+
+  .heading {
+    padding: 45px 5% 38px;
+  }
+
+  .backLink {
+    margin-bottom: 40px;
+  }
+
+  .heading h1 {
+    font-size: 46px;
+  }
+
+  .checkoutContainer {
+    width: 90%;
+    padding: 40px 0 70px;
+  }
+
+  .fieldsRow,
+  .paymentMethods {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .paymentMethods {
+    gap: 12px;
+  }
+
+  .sectionHeader {
+    gap: 15px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 24px;
+  }
+
+  .summaryCard {
+    padding: 25px 20px;
+  }
+
+  .summaryHeader {
+    flex-direction: column;
+  }
+
+  .reassurance {
+    flex-direction: column;
+  }
+
+  .successCard {
+    padding: 55px 25px;
+  }
+}

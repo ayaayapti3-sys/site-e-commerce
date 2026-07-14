@@ -12,10 +12,16 @@ import {
   ChevronDown,
 } from "lucide-react";
 import styles from "./header.module.css";
+import SearchPanel from "@/components/search/search";
+import { useFavorites } from "@/context/favorites-context";
+import { useCart } from "@/context/cart-context";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileShopOpen, setMobileShopOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const { favoritesCount } = useFavorites();
+  const { cartCount, openCart } = useCart();
 
   return (
     <>
@@ -75,26 +81,57 @@ export default function Header() {
               </div>
             </div>
 
-            <Link href="/notre-histoire">Livraison & Retours</Link>
+            <Link href="/livraison-retours" className={styles.navLink}>
+  Livraison & Retours
+</Link>
           </nav>
 
           <div className={styles.actions}>
-            <button type="button" aria-label="Rechercher">
-              <Search size={20} strokeWidth={1.35} />
-            </button>
+           <button
+  type="button"
+  className={styles.iconButton}
+  onClick={() => setSearchOpen(true)}
+  aria-label="Rechercher"
+>
+  <Search size={20} strokeWidth={1.4} />
+</button>
 
-            <Link href="/wishlist" aria-label="Favoris">
-              <Heart size={20} strokeWidth={1.35} />
-            </Link>
+           <Link
+  href="/favoris"
+  className={styles.iconButton}
+  aria-label={`Favoris : ${favoritesCount} produit${
+    favoritesCount > 1 ? "s" : ""
+  }`}
+>
+  <Heart size={20} strokeWidth={1.4} />
+
+  {favoritesCount > 0 && (
+    <span className={styles.favoriteBadge}>
+      {favoritesCount > 99 ? "99+" : favoritesCount}
+    </span>
+  )}
+</Link>
 
             <Link href="/account" aria-label="Mon compte">
               <UserRound size={20} strokeWidth={1.35} />
             </Link>
 
-            <Link href="/cart" className={styles.cart} aria-label="Panier">
-              <ShoppingBag size={20} strokeWidth={1.35} />
-              <span>0</span>
-            </Link>
+<button
+  type="button"
+  className={styles.iconButton}
+  onClick={openCart}
+  aria-label={`Ouvrir le panier, ${cartCount} article${
+    cartCount > 1 ? "s" : ""
+  }`}
+>
+  <ShoppingBag size={20} strokeWidth={1.4} />
+
+  {cartCount > 0 && (
+    <span className={styles.cartBadge}>
+      {cartCount > 99 ? "99+" : cartCount}
+    </span>
+  )}
+</button>
           </div>
         </div>
 
@@ -193,6 +230,11 @@ export default function Header() {
           <Link href="/wishlist">Mes favoris</Link>
         </div>
       </aside>
+
+      <SearchPanel
+  isOpen={searchOpen}
+  onClose={() => setSearchOpen(false)}
+/>
     </>
   );
 }

@@ -9,8 +9,8 @@ import styles from "./footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
+    <footer className={styles.footer} data-aos="fade-up">
+      <div className={styles.container}> data-aos="fade-up"
         <div className={styles.top}>
           {/* BRAND */}
           <div className={styles.brand}>

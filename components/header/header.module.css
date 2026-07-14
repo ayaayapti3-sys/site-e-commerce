@@ -1,6 +1,7 @@
 .header {
-  position: relative;
-  z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   background: #fbf8f4;
   color: #261c18;
@@ -15,7 +16,6 @@
   min-height: 92px;
   margin: 0 auto;
 }
-
 /* =========================
    LOGO
 ========================= */
@@ -495,4 +495,25 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+.iconButton {
+  position: relative;
+}
+.favoriteBadge,  .cartBadge{
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  display: grid;
+  min-width: 17px;
+  height: 17px;
+  place-items: center;
+  padding: 0 4px;
+  border: 2px solid #fbf8f4;
+  border-radius: 999px;
+  background: #941526;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1;
 }

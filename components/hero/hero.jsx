@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import styles from "./hero.module.css";
+import { motion } from "motion/react";
 
 export function Hero() {
   return (
@@ -17,9 +18,6 @@ export function Hero() {
       />
       <div className={styles.imagePanel}>
       </div>
-
-
-
       {/* <span className={styles.watermark} aria-hidden="true">
         C
       </span> */}

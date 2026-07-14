@@ -1,0 +1,677 @@
+.page {
+  --background: #fbf8f4;
+  --surface: #f4eee7;
+  --surface-light: #fffaf5;
+  --text: #251d1a;
+  --muted: #7f7068;
+  --burgundy: #9b1424;
+  --burgundy-dark: #6f0f1a;
+  --border: rgba(82, 59, 51, 0.16);
+
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 88px 5% 82px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(155, 20, 36, 0.1),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #fbf8f4 0%,
+      #f1e8df 100%
+    );
+}
+
+.heroGrid {
+  display: flex;
+  width: min(100%, 1350px);
+  align-items: center;
+  gap: 90px;
+  margin: 0 auto;
+}
+
+.heroGrid > :first-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  color: var(--burgundy);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.eyebrow::after {
+  width: 58px;
+  height: 1px;
+  background: rgba(155, 20, 36, 0.35);
+  content: "";
+}
+
+.hero h1,
+.sectionHeader h2,
+.timelineIntro h2,
+.conditionsHeader h2,
+.contact h2 {
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.hero h1 {
+  max-width: 750px;
+  margin: 0;
+  font-size: clamp(4rem, 7.4vw, 5rem);
+  line-height: 0.88;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--burgundy);
+  font-style: italic;
+}
+
+.hero p {
+  max-width: 660px;
+  margin: 34px 0 0;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.9;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.primaryButton,
+.secondaryButton,
+.contactButton {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 26px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.primaryButton {
+  background: var(--burgundy);
+  color: white;
+}
+
+.secondaryButton {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--text);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.contactButton:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================
+   HERO PANEL
+========================= */
+
+.heroPanel {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 540px;
+  flex: 0 0 440px;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 34px;
+  border: 1px solid var(--border);
+  background: rgba(255, 250, 245, 0.88);
+}
+
+.heroPanel::before {
+  position: absolute;
+  inset: 22px;
+  z-index: 2;
+  border: 1px solid rgba(155, 20, 36, 0.14);
+  content: "";
+  pointer-events: none;
+}
+
+.heroPanel::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/images/livraison/livraison-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  content: "";
+  filter: grayscale(100%);
+  opacity: 0.3;
+}
+
+.panelLabel {
+  position: relative;
+  z-index: 2;
+  color: var(--burgundy);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.panelContent {
+  position: relative;
+  z-index: 2;
+}
+
+.panelContent svg {
+  margin-bottom: 24px;
+  color: var(--burgundy);
+}
+
+.panelContent h2 {
+  max-width: 320px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.4rem;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.panelContent p {
+  margin: 22px 0 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.panelMeta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 1px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+
+.panelMeta span {
+  min-width: 0;
+  flex: 1;
+  padding: 18px 14px;
+  background: rgba(255, 250, 245, 0.86);
+  color: var(--text);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* =========================
+   POLICY
+========================= */
+
+.policySection {
+  width: min(100%, 1350px);
+  margin: 0 auto;
+  padding: 95px 5% 80px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  gap: 80px;
+  margin-bottom: 52px;
+}
+
+.sectionHeader > :first-child {
+  min-width: 0;
+  flex: 0.85;
+}
+
+.sectionHeader > :last-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 0.98;
+}
+
+.policyGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.policyCard {
+  min-width: 0;
+  min-height: 330px;
+  box-sizing: border-box;
+  flex: 0 0 calc(25% - 13.5px);
+  padding: 30px;
+  border: 1px solid var(--border);
+  background: var(--surface-light);
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.policyCard:hover {
+  background: #f5eee6;
+  transform: translateY(-7px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 58px;
+}
+
+.cardTop svg {
+  color: var(--burgundy);
+}
+
+.cardTop span {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.policyCard h3 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.policyCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timelineSection {
+  padding: 85px 5%;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: #f4eee7;
+}
+
+/* .timelineIntro {
+  display: flex;
+  width: min(100%, 1200px);
+  align-items: flex-end;
+  gap: 80px;
+  margin: 0 auto 58px;
+} */
+ .timelineIntro {
+  display: flex;
+  width: min(100%, 1200px);
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 80px;
+  row-gap: 85px;
+  margin: 0 auto 58px;
+}
+
+.timelineIntro .eyebrow {
+  flex: 0 0 calc(44% - 40px);
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.timelineIntro h2 {
+  min-width: 0;
+  max-width: 650px;
+  flex: 0 0 calc(56% - 40px);
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.timelineIntro p {
+  min-width: 0;
+  max-width: 560px;
+  flex: 0 0 calc(44% - 40px);
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.timeline {
+  display: flex;
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  border-top: 1px solid rgba(155, 20, 36, 0.22);
+}
+
+.step {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+  padding: 42px 38px 0 0;
+}
+
+.step::before {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  background: var(--burgundy);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.step span {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--burgundy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.step h3 {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+/* =========================
+   CONDITIONS
+========================= */
+
+.conditions {
+  display: flex;
+  width: min(100%, 1220px);
+  gap: 86px;
+  margin: 0 auto;
+  padding: 100px 5%;
+}
+
+.conditionsHeader {
+  min-width: 0;
+  flex: 0.8;
+}
+
+.conditionsHeader h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 0.96;
+}
+
+.conditionsList {
+  min-width: 0;
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+
+.conditionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.conditionItem svg {
+  flex: 0 0 42px;
+  margin-top: 5px;
+  color: var(--burgundy);
+}
+
+.conditionItem p {
+  min-width: 0;
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  padding: 20px 5% 110px;
+}
+
+.contactInner {
+  display: flex;
+  width: min(100%, 1120px);
+  align-items: stretch;
+  gap: 70px;
+  margin: 0 auto;
+  padding: 52px;
+  background: var(--burgundy);
+  color: white;
+}
+
+.contactInner > :first-child {
+  min-width: 0;
+  flex: 0.9;
+}
+
+.contact .eyebrow {
+  color: white;
+}
+
+.contact .eyebrow::after {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.contact h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  line-height: 0.98;
+}
+
+.contactBox {
+  min-width: 0;
+  flex: 1;
+  padding: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contactBox svg {
+  margin-bottom: 24px;
+}
+
+.contactBox p {
+  margin: 0 0 30px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.85;
+}
+
+.contactButton {
+  background: white;
+  color: var(--burgundy);
+}
+
+/* =========================
+   RESPONSIVE TABLETTE
+========================= */
+
+@media (max-width: 1100px) {
+  .heroGrid,
+  .sectionHeader,
+  .timelineIntro,
+  .conditions,
+  .contactInner {
+    flex-direction: column;
+    gap: 45px;
+  }
+
+    .timelineIntro {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .heroPanel {
+    width: 100%;
+    min-height: 420px;
+    box-sizing: border-box;
+    flex-basis: auto;
+  }
+
+  .policyCard {
+    flex-basis: calc(50% - 9px);
+  }
+
+  .timeline {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .step {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 0;
+  }
+
+  .heroGrid > :first-child,
+  .sectionHeader > :first-child,
+  .sectionHeader > :last-child,
+  .timelineIntro h2,
+  .timelineIntro p,
+  .conditionsHeader,
+  .conditionsList,
+  .contactInner > :first-child,
+  .contactBox {
+    width: 100%;
+    max-width: none;
+    flex: initial;
+  }
+    .timelineIntro .eyebrow,
+  .timelineIntro h2,
+  .timelineIntro p {
+    width: 100%;
+    max-width: 650px;
+    flex: none;
+    margin: 0;
+  }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 680px) {
+  .hero {
+    padding: 70px 6%;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 18vw, 5rem);
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .contactButton {
+    width: 100%;
+  }
+
+  .policySection,
+  .conditions {
+    padding: 70px 6%;
+  }
+
+  .policyGrid {
+    flex-direction: column;
+  }
+
+  .policyCard {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .heroPanel,
+  .contactInner,
+  .contactBox {
+    padding: 28px;
+  }
+
+  .panelMeta {
+    flex-direction: column;
+  }
+
+  .panelMeta span {
+    width: 100%;
+    box-sizing: border-box;
+    flex: initial;
+  }
+
+  .contact {
+    padding: 20px 6% 80px;
+  }
+    .timelineIntro {
+    gap: 24px;
+    margin-bottom: 45px;
+  }
+    .timelineIntro h2 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+}
