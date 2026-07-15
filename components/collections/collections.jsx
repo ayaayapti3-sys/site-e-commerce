@@ -5,7 +5,7 @@ import styles from "./collections.module.css";
 
 export default function Collections() {
   return (
-    <section className={styles.collections} data-aos="fade-up">
+    <section id="collections" className={styles.collections} data-aos="fade-up">
       <div className={styles.container}>
         <header className={styles.header} data-aos="fade-up">
           <span className={styles.eyebrow}>Nos collections</span>
@@ -24,7 +24,7 @@ export default function Collections() {
 
         <div className={styles.gallery}>
           <article className={`${styles.card} ${styles.sideCard}`} data-aos="fade-up">
-            <Link href="/collections/sandale" className={styles.cardLink}>
+            <Link href="/sandales" className={styles.cardLink}>
               <div className={styles.imageWrapper}>
                 <Image
                   src="/images/collections/sandale.png"
@@ -53,7 +53,7 @@ export default function Collections() {
           <article className={`${styles.card} ${styles.mainCard}`} data-aos="fade-up">
             <span className={styles.featured}>Collection signature</span>
 
-            <Link href="/collections/sacs" className={styles.cardLink}>
+            <Link href="/sacs" className={styles.cardLink}>
               <div className={styles.imageWrapper}>
                 <Image
                   src="/images/collections/sacs.png"
@@ -83,7 +83,7 @@ export default function Collections() {
           </article>
 
           <article className={`${styles.card} ${styles.sideCard}`} data-aos="fade-up">
-            <Link href="/collections/botte" className={styles.cardLink}>
+            <Link href="/bottes" className={styles.cardLink}>
               <div className={styles.imageWrapper}>
                 <Image
                   src="/images/collections/botte.png"

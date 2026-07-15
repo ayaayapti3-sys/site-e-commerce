@@ -144,7 +144,15 @@
   gap: 36px 28px;
   width: 100%;
 }
+.favoriteActive {
+  background: #981525;
+  color: #fff;
+  border-color: #981525;
+}
 
+.favoriteActive svg {
+  fill: currentColor;
+}
 .productCard {
   flex: 0 0 calc((100% - 84px) / 4);
   min-width: 0;

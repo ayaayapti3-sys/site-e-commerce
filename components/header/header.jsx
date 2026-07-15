@@ -82,87 +82,84 @@ export default function Header() {
             </div>
 
             <Link href="/livraison-retours" className={styles.navLink}>
-  Livraison & Retours
-</Link>
+              Livraison & Retours
+            </Link>
           </nav>
 
           <div className={styles.actions}>
-           <button
-  type="button"
-  className={styles.iconButton}
-  onClick={() => setSearchOpen(true)}
-  aria-label="Rechercher"
->
-  <Search size={20} strokeWidth={1.4} />
-</button>
+            <button
+              type="button"
+              className={styles.iconButton}
+              onClick={() => setSearchOpen(true)}
+              aria-label="Rechercher"
+            >
+              <Search size={20} strokeWidth={1.4} />
+            </button>
 
-           <Link
-  href="/favoris"
-  className={styles.iconButton}
-  aria-label={`Favoris : ${favoritesCount} produit${
-    favoritesCount > 1 ? "s" : ""
-  }`}
->
-  <Heart size={20} strokeWidth={1.4} />
+            <Link
+              href="/favoris"
+              className={styles.iconButton}
+              aria-label={`Favoris : ${favoritesCount} produit${favoritesCount > 1 ? "s" : ""
+                }`}
+            >
+              <Heart size={20} strokeWidth={1.4} />
 
-  {favoritesCount > 0 && (
-    <span className={styles.favoriteBadge}>
-      {favoritesCount > 99 ? "99+" : favoritesCount}
-    </span>
-  )}
-</Link>
+              {favoritesCount > 0 && (
+                <span className={styles.favoriteBadge}>
+                  {favoritesCount > 99 ? "99+" : favoritesCount}
+                </span>
+              )}
+            </Link>
 
-            <Link href="/account" aria-label="Mon compte">
+            <Link href="/livraison-retours#contact" aria-label="Mon compte">
               <UserRound size={20} strokeWidth={1.35} />
             </Link>
 
-<button
-  type="button"
-  className={styles.iconButton}
-  onClick={openCart}
-  aria-label={`Ouvrir le panier, ${cartCount} article${
-    cartCount > 1 ? "s" : ""
-  }`}
->
-  <ShoppingBag size={20} strokeWidth={1.4} />
+            <button
+              type="button"
+              className={styles.iconButton}
+              onClick={openCart}
+              aria-label={`Ouvrir le panier, ${cartCount} article${cartCount > 1 ? "s" : ""
+                }`}
+            >
+              <ShoppingBag size={20} strokeWidth={1.4} />
 
-  {cartCount > 0 && (
-    <span className={styles.cartBadge}>
-      {cartCount > 99 ? "99+" : cartCount}
-    </span>
-  )}
-</button>
+              {cartCount > 0 && (
+                <span className={styles.cartBadge}>
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
+            </button>
           </div>
         </div>
 
-        <div className={styles.brandStrip}>
-          <div className={styles.brandStripTrack}>
-            <span>Fait main à Fès</span>
-            <i />
-            <span>Cuir authentique</span>
-            <i />
-            <span>Livraison partout au Maroc</span>
-            <i />
-            <span>Fait main à Fès</span>
-            <i />
-            <span>Cuir authentique</span>
-            <i />
-            <span>Livraison partout au Maroc</span>
-          </div>
+              <div className={styles.brandStrip}>
+        <div className={styles.brandStripTrack}>
+          <span>Fait main à Fès</span>
+          <i />
+          <span>Cuir authentique</span>
+          <i />
+          <span>Livraison partout au Maroc</span>
+          <i />
+          <span>Fait main à Fès</span>
+          <i />
+          <span>Cuir authentique</span>
+          <i />
+          <span>Livraison partout au Maroc</span>
         </div>
+      </div>
+
       </header>
 
       <div
-        className={`${styles.mobileOverlay} ${
-          mobileMenuOpen ? styles.mobileOverlayOpen : ""
-        }`}
+        className={`${styles.mobileOverlay} ${mobileMenuOpen ? styles.mobileOverlayOpen : ""
+          }`}
         onClick={() => setMobileMenuOpen(false)}
       />
 
       <aside
-        className={`${styles.mobileMenu} ${
-          mobileMenuOpen ? styles.mobileMenuOpen : ""
-        }`}
+        className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""
+          }`}
       >
         <div className={styles.mobileMenuHeader}>
           <Link href="/" onClick={() => setMobileMenuOpen(false)}>
@@ -193,9 +190,8 @@ export default function Header() {
           </button>
 
           <div
-            className={`${styles.mobileShopLinks} ${
-              mobileShopOpen ? styles.mobileShopLinksOpen : ""
-            }`}
+            className={`${styles.mobileShopLinks} ${mobileShopOpen ? styles.mobileShopLinksOpen : ""
+              }`}
           >
             <Link
               href="/nouveautes"
@@ -232,9 +228,9 @@ export default function Header() {
       </aside>
 
       <SearchPanel
-  isOpen={searchOpen}
-  onClose={() => setSearchOpen(false)}
-/>
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
     </>
   );
 }

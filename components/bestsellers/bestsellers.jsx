@@ -1,14 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart } from "lucide-react";
 import styles from "./bestsellers.module.css";
+import { useFavorites } from "@/context/favorites-context";
 
 const products = [
   {
     id: 1,
-    name: "Sandales tressées à boucle",
+    name: "Sandales Tressées en Cuir",
     category: "Sandales plates en cuir",
-    price: "890 MAD",
+    price: "790 MAD",
     oldPrice: null,
     badge: "BESTSELLER",
     badgeType: "bestseller",
@@ -16,12 +19,12 @@ const products = [
     image: "/images/bestsellers/san-boucle.png",
     hoverImage: "/images/bestsellers/hovv-oucle.png",
 
-    href: "/products/sandales-tressees-a-boucle",
+    href: "/produits/sandales-tressees-en-cuir",
     colors: ["#7f3f26", "#c39a6b", "#211c19"],
   },
   {
     id: 2,
-    name: "Sac structuré à fermoir",
+    name: "Sac Seau en Cuir Grainé",
     category: "Sac à main en cuir",
     price: "1 490 MAD",
     oldPrice: null,
@@ -31,7 +34,7 @@ const products = [
     image: "/images/bestsellers/sac.png",
     hoverImage: "/images/bestsellers/sac-hover.png",
 
-    href: "/products/sac-structure-a-fermoir",
+    href: "/produits/sac-seau-cuir-graine",
     colors: ["#b8a38d", "#7c4c32", "#2f241f"],
   },
   {
@@ -46,27 +49,28 @@ const products = [
     image: "/images/bestsellers/bottines-talon.png",
     hoverImage: "/images/bestsellers/bottine-talon-carre-hover.png",
 
-    href: "/products/bottines-a-talon-carre",
+    href: "/produits/bottines-a-talon-carre",
     colors: ["#721522", "#2a211d"],
   },
   {
     id: 4,
-    name: "Sac hobo grainé",
+    name: "Sac Hobo Souple",
     category: "Sac porté épaule en cuir",
-    price: "1 690 MAD",
-    oldPrice: null,
+    price: "1 490 MAD",
+    oldPrice: "1 690 MAD",
     badge: "SALE",
     badgeType: "sale",
 
     image: "/images/bestsellers/sac-hobo-graine.png",
     hoverImage: "/images/bestsellers/sac-hobo-graine-hover.png",
 
-    href: "/products/sac-hobo-graine",
+    href: "/produits/sac-hobo-souple",
     colors: ["#8c1724", "#8a5638", "#25201d"],
   },
 ];
 
 export default function Bestsellers() {
+  const { toggleFavorite, isFavorite } = useFavorites();
   return (
     <section className={styles.bestsellers} data-aos="fade-up">
       <div className={styles.container}>
@@ -93,96 +97,112 @@ export default function Bestsellers() {
         </header>
 
         <div className={styles.products}>
-          {products.map((product) => (
-            <article className={styles.productCard} key={product.id} data-aos="fade-up">
-              <div className={styles.imageWrapper}>
-                <Link href={product.href} className={styles.imageLink}>
-                  {/* Image principale */}
+  {products.map((product) => {
+    const productIsFavorite = isFavorite(product.href);
 
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 25vw"
-                    className={`${styles.productImage} ${styles.mainImage}`}
-                  />
+    return (
+      <article
+        className={styles.productCard}
+        key={product.id}
+        data-aos="fade-up"
+      >
+        <div className={styles.imageWrapper}>
+          <Link href={product.href} className={styles.imageLink}>
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 25vw"
+              className={`${styles.productImage} ${styles.mainImage}`}
+            />
 
-                  {/* Image affichée au hover */}
+            <Image
+              src={product.hoverImage}
+              alt={`${product.name} - deuxième vue`}
+              fill
+              sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 25vw"
+              className={`${styles.productImage} ${styles.hoverImage}`}
+            />
+          </Link>
 
-                  <Image
-                    src={product.hoverImage}
-                    alt={`${product.name} - deuxième vue`}
-                    fill
-                    sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 25vw"
-                    className={`${styles.productImage} ${styles.hoverImage}`}
-                  />
-                </Link>
+          <span
+            className={`${styles.badge} ${styles[product.badgeType]}`}
+          >
+            {product.badge}
+          </span>
 
-                <span
-                  className={`${styles.badge} ${
-                    styles[product.badgeType]
-                  }`}
-                >
-                  {product.badge}
-                </span>
+          <button
+            type="button"
+            className={
+              productIsFavorite
+                ? `${styles.favoriteButton} ${styles.favoriteActive}`
+                : styles.favoriteButton
+            }
+            onClick={() => toggleFavorite(product)}
+            aria-label={
+              productIsFavorite
+                ? `Retirer ${product.name} des favoris`
+                : `Ajouter ${product.name} aux favoris`
+            }
+            aria-pressed={productIsFavorite}
+          >
+            <Heart
+              size={19}
+              strokeWidth={1.5}
+              fill={productIsFavorite ? "currentColor" : "none"}
+            />
+          </button>
 
-                <button
-                  type="button"
-                  className={styles.favoriteButton}
-                  aria-label={`Ajouter ${product.name} aux favoris`}
-                >
-                  <Heart size={19} strokeWidth={1.5} />
-                </button>
-
-                <Link href={product.href} className={styles.quickView}>
-                  Voir le produit
-                  <ArrowRight size={16} strokeWidth={1.5} />
-                </Link>
-              </div>
-
-              <div className={styles.productInfo}>
-                <span className={styles.category}>
-                  {product.category}
-                </span>
-
-                <div className={styles.productTop}>
-                  <Link
-                    href={product.href}
-                    className={styles.productName}
-                  >
-                    {product.name}
-                  </Link>
-
-                  <div
-                    className={styles.colors}
-                    aria-label="Couleurs disponibles"
-                  >
-                    {product.colors.map((color, index) => (
-                      <span
-                        key={`${product.id}-${index}`}
-                        className={styles.color}
-                        style={{ backgroundColor: color }}
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className={styles.prices}>
-                  <span className={styles.price}>
-                    {product.price}
-                  </span>
-
-                  {product.oldPrice && (
-                    <span className={styles.oldPrice}>
-                      {product.oldPrice}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
+          <Link href={product.href} className={styles.quickView}>
+            Voir le produit
+            <ArrowRight size={16} strokeWidth={1.5} />
+          </Link>
         </div>
+
+        <div className={styles.productInfo}>
+          <span className={styles.category}>
+            {product.category}
+          </span>
+
+          <div className={styles.productTop}>
+            <Link
+              href={product.href}
+              className={styles.productName}
+            >
+              {product.name}
+            </Link>
+
+            <div
+              className={styles.colors}
+              aria-label="Couleurs disponibles"
+            >
+              {product.colors.map((color, index) => (
+                <span
+                  key={`${product.id}-${index}`}
+                  className={styles.color}
+                  style={{ backgroundColor: color }}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.prices}>
+            <span className={styles.price}>
+              {product.price.toLocaleString("fr-FR")} MAD
+            </span>
+
+            {product.oldPrice && (
+              <span className={styles.oldPrice}>
+                {product.oldPrice.toLocaleString("fr-FR")} MAD
+              </span>
+            )}
+          </div>
+        </div>
+      </article>
+    );
+  })}
+</div>
       </div>
     </section>
   );

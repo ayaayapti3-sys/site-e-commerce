@@ -386,8 +386,8 @@ export default function SandalesPage() {
               unique.
             </p>
 
-            <Link href="/notre-histoire">
-              Notre savoir-faire
+            <Link href="/#ourStory">
+              Découvrir notre histoire
 
               <ArrowUpRight
                 size={17}

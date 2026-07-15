@@ -481,7 +481,7 @@ export default function SacsPage() {
               dans nos ateliers.
             </p>
 
-            <Link href="/notre-histoire">
+            <Link href="/#ourStory">
               <span>Découvrir notre histoire</span>
 
               <ArrowUpRight

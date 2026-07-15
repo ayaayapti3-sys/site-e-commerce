@@ -25,7 +25,7 @@
   content: "ÉLYRA";
   position: absolute;
   top: 15px;
-  right: -20px;
+  right: 0px;
 
   color: rgba(143, 21, 35, 0.035);
   font-family: Georgia, "Times New Roman", serif;
@@ -36,8 +36,8 @@
   pointer-events: none;
 }
 .container {
-  width: min(100%, 1540px);
-  /* margin: 0 auto; */
+  width: min(100%, 1600px);
+  margin: 0 auto;
 
 }
 
@@ -55,7 +55,7 @@
 
 .headingBlock {
   flex: 1;
-  max-width: 720px;
+  /* max-width: 520px; */
 }
 
 .eyebrow {
@@ -98,13 +98,15 @@
   align-items: center;
   gap: 40px;
   flex: 0 1 590px;
-  max-width: 590px;
+  /* max-width: 590px; */
 }
 
 .verticalLine {
   width: 1px;
   height: 82px;
   flex-shrink: 0;
+  /* margin-right: 35px; */
+  /* right: 20px; */
   background: var(--border);
 }
 

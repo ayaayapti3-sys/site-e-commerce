@@ -381,7 +381,7 @@ export default function BottesPage() {
               solides et intemporelles.
             </p>
 
-            <Link href="/notre-histoire">
+            <Link href="/#ourStory">
               Découvrir notre histoire
               <ArrowUpRight
                 size={17}

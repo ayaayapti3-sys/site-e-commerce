@@ -20,7 +20,7 @@ const values = [
 
 export default function OurStory() {
   return (
-    <section className={styles.story} id="notre-histoire" data-aos="fade-up">
+    <section id="ourStory" className={styles.story} data-aos="fade-up">
       <div className={styles.container}>
         <div className={styles.visualSide}>
           <div className={styles.mainImage} data-aos="fade-up">
@@ -73,7 +73,7 @@ export default function OurStory() {
             “Créer moins, mais créer des pièces que l’on garde longtemps.”
           </blockquote>
 
-          <Link href="/savoir-faire" className={styles.link}>
+          <Link href="#ourStory" className={styles.link}>
             Découvrir notre savoir-faire
             <ArrowUpRight size={17} strokeWidth={1.5} />
           </Link>

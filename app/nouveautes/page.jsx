@@ -414,7 +414,7 @@ export default function NouveautesPage() {
               du cuir jusqu’aux dernières finitions.
             </p>
 
-            <Link href="/notre-histoire">
+            <Link href="/#ourStory">
               Découvrir notre histoire
               <ArrowUpRight size={17} strokeWidth={1.5} />
             </Link>

@@ -2,11 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import styles from "./hero.module.css";
-import { motion } from "motion/react";
+
 
 export function Hero() {
   return (
+
     <section className={styles.hero} data-aos="fade-up">
+
       <Image
         src="/images/hero.png"
         alt="Sac et sandales Chouara en cuir, posés sur un socle en pierre"
@@ -47,12 +49,12 @@ export function Hero() {
         </p>
 
         <div className={styles.actions} data-aos="fade-up">
-          <Link href="/products" className={styles.primaryButton}>
+          <Link href="#collections" className={styles.primaryButton}>
             Découvrir la collection
             <ArrowRight size={16} />
           </Link>
 
-          <Link href="/about" className={styles.secondaryButton}>
+          <Link href="#ourStory" className={styles.secondaryButton}>
             Explorer notre savoir-faire
             <ArrowRight size={16} />
           </Link>
