@@ -65,7 +65,7 @@ export const products = [
     name: "Mini Sac Bandoulière",
     category: "Sacs",
     type: "Mini",
-    color: "Beige",
+    color: "Pink",
     price: 990,
     image: "/images/sacs/mini-sac-bandouliere.png",
     hoverImage: "/images/sacs/mini-sac-bandouliere-hover.png",
@@ -99,7 +99,7 @@ export const products = [
     category: "Sacs en cuir",
     type: "Seau",
     color: "Cognac",
-    price: 1490,
+    price: 490,
     image: "/images/sacs-cuir/sac-seau-cuir-graine.png",
     hoverImage:
       "/images/sacs-cuir/sac-seau-cuir-graine-hover.png",
@@ -114,7 +114,7 @@ export const products = [
     category: "Sacs en cuir",
     type: "Structuré",
     color: "Bordeaux",
-    price: 1690,
+    price: 690,
     image: "/images/sacs-cuir/sac-main-cuir-lisse.png",
     hoverImage:
       "/images/sacs-cuir/sac-main-cuir-lisse-hover.png",
@@ -129,7 +129,7 @@ export const products = [
     category: "Sacs en cuir",
     type: "Hobo",
     color: "Marron foncé",
-    price: 1590,
+    price: 590,
     image: "/images/sacs-cuir/sac-hobo-cuir-souple.png",
     hoverImage:
       "/images/sacs-cuir/sac-hobo-cuir-souple-hover.png",
@@ -143,8 +143,8 @@ export const products = [
     name: "Mini Sac en Cuir à Fermoir",
     category: "Sacs en cuir",
     type: "Mini",
-    color: "Noir",
-    price: 1290,
+    color: "Navy",
+    price: 299,
     image: "/images/sacs-cuir/mini-sac-cuir-fermoir.png",
     hoverImage:
       "/images/sacs-cuir/mini-sac-cuir-fermoir-hover.png",
@@ -180,7 +180,7 @@ export const products = [
     category: "Sandales",
     type: "À boucle",
     color: "Noir",
-    price: 850,
+    price: 199,
     image:
       "/images/sandales/sandales-a-boucle-minimalistes.png",
     hoverImage:
@@ -196,7 +196,7 @@ export const products = [
     category: "Sandales",
     type: "À talon",
     color: "Bordeaux",
-    price: 990,
+    price: 250,
     image: "/images/sandales/sandales-a-talon-bloc.png",
     hoverImage:
       "/images/sandales/sandales-a-talon-bloc-hover.png",
@@ -241,7 +241,7 @@ export const products = [
     category: "Sandales",
     type: "À talon",
     color: "Cognac",
-    price: 1050,
+    price: 299,
     image: "/images/sandales/sandales-a-talon-sculpte.png",
     hoverImage:
       "/images/sandales/sandales-a-talon-sculpte-hover.png",
@@ -290,7 +290,7 @@ export const products = [
     category: "Bottes",
     type: "Montantes",
     color: "Noir",
-    price: 1490,
+    price: 490,
     image: "/images/bottes/bottes-hautes-en-cuir.png",
     hoverImage:
       "/images/bottes/bottes-hautes-en-cuir-hover.png",
@@ -305,7 +305,7 @@ export const products = [
     category: "Bottes",
     type: "À lacets",
     color: "Marron",
-    price: 1350,
+    price: 350,
     image: "/images/bottes/bottines-a-lacets.png",
     hoverImage:
       "/images/bottes/bottines-a-lacets-hover.png",
@@ -320,7 +320,7 @@ export const products = [
     category: "Bottes",
     type: "Cavalières",
     color: "Cognac",
-    price: 1690,
+    price: 690,
     image: "/images/bottes/bottes-cavalieres.png",
     hoverImage:
       "/images/bottes/bottes-cavalieres-hover.png",
@@ -335,7 +335,7 @@ export const products = [
     category: "Bottes",
     type: "Talon fin",
     color: "Beige",
-    price: 1390,
+    price: 399,
     image: "/images/bottes/bottines-a-talon-fin.png",
     hoverImage:
       "/images/bottes/bottines-a-talon-fin-hover.png",

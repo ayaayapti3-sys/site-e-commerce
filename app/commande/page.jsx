@@ -19,7 +19,7 @@ import styles from "./commande.module.css";
 import Footer from "@/components/footer/footer";
 
 export default function CommandePage() {
-  const { cartItems = [] } = useCart();
+  const { cart: cartItems = [] } = useCart();
 
   const [paymentMethod, setPaymentMethod] = useState("delivery");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,19 +38,45 @@ export default function CommandePage() {
     return `${Number(price).toLocaleString("fr-MA")} MAD`;
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-    if (cartItems.length === 0) return;
+  if (cartItems.length === 0) return;
 
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setOrderPlaced(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 900);
-  };
+  try {
+    const response = await fetch("/api/shopify-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cartItems,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.message || "Impossible de créer la commande."
+      );
+    }
+
+    window.location.href = result.checkoutUrl;
+  } catch (error) {
+    console.error("Erreur checkout Shopify :", error);
+
+    alert(
+      error instanceof Error
+        ? error.message
+        : "Une erreur est survenue."
+    );
+
+    setIsSubmitting(false);
+  }
+};
 
   if (orderPlaced) {
     return (

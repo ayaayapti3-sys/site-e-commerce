@@ -2,20 +2,21 @@ import { notFound } from "next/navigation";
 
 import Header from "@/components/header/header";
 import ProductView from "@/components/product/product-view";
-import { products } from "@/data/products";
+import {
+  getProductByHandle,
+  getProducts,
+} from "@/lib/shopify/products";
 
 export default async function ProduitPage({ params }) {
   const { slug } = await params;
-  
-  const product = products.find(
-    (item) =>
-      item.slug === slug ||
-      item.href === `/produits/${slug}`
-  );
-console.log(product)
+
+  const product = await getProductByHandle(slug);
+
   if (!product) {
     notFound();
   }
+
+  const products = await getProducts();
 
   const relatedProducts = products
     .filter(
