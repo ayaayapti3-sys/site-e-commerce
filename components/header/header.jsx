@@ -15,6 +15,8 @@ import styles from "./header.module.css";
 import SearchPanel from "@/components/search/search";
 import { useFavorites } from "@/context/favorites-context";
 import { useCart } from "@/context/cart-context";
+import { MessageCircle } from "lucide-react";
+import ContactModal from "@/components/contact-modal/contact-modal";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,6 +24,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const { favoritesCount } = useFavorites();
   const { cartCount, openCart } = useCart();
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <>
@@ -111,9 +114,14 @@ export default function Header() {
               )}
             </Link>
 
-            <Link href="/livraison-retours#contact" aria-label="Mon compte">
-              <UserRound size={20} strokeWidth={1.35} />
-            </Link>
+          <button
+  type="button"
+  className={styles.iconButton}
+  onClick={() => setIsContactOpen(true)}
+  aria-label="Nous contacter"
+>
+  <MessageCircle size={22} strokeWidth={1.4} />
+</button>
 
             <button
               type="button"
@@ -231,6 +239,15 @@ export default function Header() {
         isOpen={searchOpen}
         onClose={() => setSearchOpen(false)}
       />
+
+          <header className={styles.header}>
+      {/* contenu actuel dyal header */}
+    </header>
+
+    <ContactModal
+      isOpen={isContactOpen}
+      onClose={() => setIsContactOpen(false)}
+    />
     </>
   );
 }

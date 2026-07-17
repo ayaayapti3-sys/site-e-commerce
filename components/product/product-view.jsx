@@ -359,46 +359,40 @@ export default function ProductView({
                   "Une création façonnée en cuir véritable, pensée pour conjuguer élégance, confort et durabilité."}
               </p>
 
-              {/* COULEURS */}
-              {colors.length > 0 && (
-                <div className={styles.optionGroup}>
-                  <div className={styles.optionHeader}>
-                    <span>Couleur</span>
-                    <strong>{selectedColor}</strong>
-                  </div>
+{/* COULEURS */}
+{colors.length > 0 && (
+  <div className={styles.optionGroup}>
+    <div className={styles.optionHeader}>
+      <span>Couleur</span>
+      <strong>{product.color || "Couleur"}</strong>
+    </div>
 
-                  <div className={styles.colorOptions}>
-                    {colors.map((color) => (
-                      <button
-                        type="button"
-                        key={color}
-                        className={
-                          selectedColor === color
-                            ? `${styles.colorOption} ${styles.selectedColor}`
-                            : styles.colorOption
-                        }
-                        onClick={() =>
-                          setSelectedColor(color)
-                        }
-                      >
-                        <span
-                          className={styles.colorDot}
-                          data-color={color.toLowerCase()}
-                        />
+    <div className={styles.colorOptions}>
+      {colors.map((color) => (
+        <button
+          type="button"
+          key={color}
+          className={`${styles.colorOption} ${
+            selectedColor === color ? styles.colorOptionActive : ""
+          }`}
+          onClick={() => setSelectedColor(color)}
+          aria-label={`Sélectionner la couleur ${product.color}`}
+        >
+          <span
+            className={styles.colorSwatch}
+            style={{ backgroundColor: color }}
+          />
 
-                        <span>{color}</span>
+          <span>{product.color}</span>
 
-                        {selectedColor === color && (
-                          <Check
-                            size={13}
-                            strokeWidth={1.7}
-                          />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+          {selectedColor === color && (
+            <Check size={15} strokeWidth={1.5} />
+          )}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
 
               {/* POINTURES */}
               {sizes.length > 0 && (

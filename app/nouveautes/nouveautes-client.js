@@ -89,27 +89,27 @@ export default function NouveautesClient({ products }) {
             <div className={styles.breadcrumb}>
               <Link href="/">Accueil</Link>
               <span>/</span>
-              <span>Nouveautés</span>
+              <span>Boutique</span>
             </div>
 
             <div className={styles.heroContent} data-aos="fade-up">
               <div>
-                <span className={styles.eyebrow}>
-                  La nouvelle collection
-                </span>
+<span className={styles.eyebrow}>
+  Toute la collection
+</span>
 
-                <h1 data-aos="fade-up">
-                  Les dernières
-                  <br />
-                  <em>créations Élyra</em>
-                </h1>
+            <h1 data-aos="fade-up">
+  Découvrez toutes
+  <br />
+  <em>les créations Élyra</em>
+</h1>
               </div>
 
               <div className={styles.heroDescription} data-aos="fade-up">
-                <p>
-                  Découvrez nos nouvelles pièces en cuir, façonnées avec
-                  patience dans nos ateliers à Fès.
-                </p>
+             <p>
+  Découvrez l’ensemble de nos sacs, sandales et bottes en cuir,
+  façonnés avec patience dans nos ateliers à Fès.
+</p>
 
                 <span className={styles.productCount}>
                   {products.length.toString().padStart(2, "0")} pièces
@@ -158,7 +158,7 @@ export default function NouveautesClient({ products }) {
                     value={sortBy}
                     onChange={(event) => setSortBy(event.target.value)}
                   >
-                    <option value="newest">Nouveautés</option>
+                   <option value="newest">Les plus récents</option>
                     <option value="price-low">Prix croissant</option>
                     <option value="price-high">Prix décroissant</option>
                     <option value="name">Nom A–Z</option>

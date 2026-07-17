@@ -677,3 +677,14 @@
     padding: 55px 25px;
   }
 }
+
+.checkoutLoader {
+  animation: checkoutSpin 0.9s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes checkoutSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

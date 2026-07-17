@@ -1,0 +1,627 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(20, 18, 16, 0.58);
+  backdrop-filter: blur(5px);
+}
+
+.modal {
+  position: relative;
+
+  width: min(940px, 100%);
+  max-height: calc(100vh - 48px);
+
+  overflow: hidden;
+
+  background: #faf9f6;
+  border: 1px solid rgba(26, 25, 22, 0.18);
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.28);
+}
+
+/* FLEXBOX PRINCIPAL */
+
+.modalGrid {
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+  min-height: 560px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  color: #191815;
+  background: transparent;
+  border: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.closeButton:hover {
+  opacity: 0.65;
+  transform: rotate(90deg);
+}
+
+/* LEFT PANEL */
+
+.brandPanel {
+  position: relative;
+
+  display: flex;
+  flex: 0 0 38%;
+  flex-direction: column;
+
+  min-width: 0;
+  padding: 40px 34px 30px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 247, 241, 0.95),
+      rgba(239, 233, 224, 0.95)
+    ),
+    url("/images/contact-bg.jpg") center / cover no-repeat;
+
+  border-right: 1px solid rgba(30, 28, 24, 0.08);
+}
+
+.brandPanel::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(143, 21, 35, 0.08),
+    transparent 46%
+  );
+}
+
+.brandTop,
+.brandContent,
+.contactDetails {
+  position: relative;
+  z-index: 1;
+}
+
+.brandTop {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 34px;
+
+  color: #8f1523;
+  text-align: center;
+}
+
+.monogram {
+  font-family: "Bodoni Moda", serif;
+  font-size: 31px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.brandTop > span {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.brandContent {
+  width: 100%;
+}
+
+.brandLine {
+  display: block;
+
+  width: 30px;
+  height: 1px;
+
+  margin-bottom: 18px;
+
+  background: #8f1523;
+}
+
+.brandContent h2 {
+  max-width: 100%;
+  margin: 0 0 20px;
+
+  color: #191815;
+
+  font-family: "Bodoni Moda", serif;
+  font-size: 37px;
+  font-weight: 500;
+  line-height: 0.97;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.brandContent p {
+  max-width: 300px;
+  margin: 0;
+
+  color: #6c665f;
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* CONTACT INFO DIRECTEMENT SOUS LE TEXTE */
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  margin-top: 28px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 14px 0;
+
+  color: #8f1523;
+
+  border-bottom: 1px solid rgba(28, 26, 23, 0.1);
+}
+
+.contactItem:last-child {
+  border-bottom: 0;
+}
+
+.contactItem > svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.contactItem > div {
+  min-width: 0;
+}
+
+.contactItem span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #45413d;
+
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contactItem p {
+  margin: 0;
+
+  color: #777068;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* RIGHT PANEL */
+
+.formPanel {
+  display: flex;
+  flex: 1;
+  align-items: center;
+
+  min-width: 0;
+  padding: 44px 48px 30px;
+
+  overflow-y: auto;
+
+  background: #fcfbf9;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  width: 100%;
+}
+
+.fieldsRow {
+  display: flex;
+  gap: 18px;
+
+  width: 100%;
+}
+
+.fieldsRow .field {
+  flex: 1;
+  min-width: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  width: 100%;
+}
+
+.field label {
+  color: #56504a;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+
+  color: #1c1a17;
+  background: transparent;
+  border: 1px solid #d8d2ca;
+  border-radius: 0;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.field input,
+.field select {
+  height: 51px;
+  padding: 0 15px;
+}
+
+.field textarea {
+  min-height: 120px;
+  padding: 15px;
+
+  resize: vertical;
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #8f1523;
+  box-shadow: 0 0 0 1px rgba(143, 21, 35, 0.12);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #b7b0a8;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  width: 100%;
+  min-height: 54px;
+
+  padding: 15px 24px;
+
+  color: #f1ece5;
+  background: #171614;
+  border: 1px solid #171614;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  color: #8f1523;
+  background: transparent;
+  border-color: #8f1523;
+}
+
+.submitButton:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin: -5px 0 0;
+
+  color: #8f8880;
+
+  font-size: 9px;
+}
+
+.errorMessage {
+  margin: -5px 0 0;
+
+  color: #a12828;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mobileHeader {
+  display: none;
+}
+
+.eyebrow {
+  display: block;
+
+  color: #8f1523;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* SUCCESS */
+
+.successPanel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 460px;
+  padding: 25px;
+
+  text-align: left;
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  margin-bottom: 28px;
+
+  color: #ffffff;
+  background: #8f1523;
+  border-radius: 50%;
+}
+
+.successPanel .eyebrow {
+  margin-bottom: 15px;
+}
+
+.successPanel h2 {
+  margin: 0;
+
+  color: #1a1815;
+
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(44px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.successLine {
+  display: block;
+
+  width: 42px;
+  height: 1px;
+
+  margin: 26px 0 20px;
+
+  background: #8f1523;
+}
+
+.successPanel p {
+  max-width: 390px;
+  margin: 0;
+
+  color: #777068;
+
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.successButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: min(290px, 100%);
+  min-height: 52px;
+
+  margin-top: 32px;
+  padding: 0 21px;
+
+  color: #f1ece5;
+  background: #171614;
+  border: 1px solid #171614;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.successButton:hover {
+  color: #8f1523;
+  background: transparent;
+  border-color: #8f1523;
+}
+
+/* TABLET */
+
+@media (max-width: 780px) {
+  .overlay {
+    align-items: flex-start;
+
+    padding: 15px;
+    overflow-y: auto;
+  }
+
+  .modal {
+    margin: 20px 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .modalGrid {
+    flex-direction: column;
+
+    min-height: auto;
+  }
+
+  .brandPanel {
+    display: none;
+  }
+
+  .formPanel {
+    flex: none;
+
+    width: 100%;
+    padding: 58px 24px 28px;
+
+    overflow: visible;
+  }
+
+  .mobileHeader {
+    display: block;
+
+    margin-bottom: 30px;
+  }
+
+  .mobileHeader h2 {
+    margin: 8px 0 10px;
+
+    font-family: "Bodoni Moda", serif;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .mobileHeader p {
+    margin: 0;
+
+    color: #777068;
+
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .successPanel {
+    align-items: center;
+
+    min-height: 430px;
+    padding: 50px 10px 25px;
+
+    text-align: center;
+  }
+
+  .successPanel h2 {
+    font-size: 45px;
+  }
+
+  .successPanel p {
+    max-width: 330px;
+  }
+
+  .successButton {
+    justify-content: center;
+    gap: 18px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+  .overlay {
+    padding: 10px;
+  }
+
+  .modal {
+    margin: 10px 0;
+  }
+
+  .formPanel {
+    padding: 55px 19px 25px;
+  }
+
+  .fieldsRow {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .field textarea {
+    min-height: 135px;
+  }
+
+  .successPanel h2 {
+    font-size: 39px;
+  }
+}

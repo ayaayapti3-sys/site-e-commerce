@@ -6,8 +6,11 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
+
+import FavoriteToast from "@/components/favorite-toast/favorite-toast";
 
 const FavoritesContext = createContext(null);
 
@@ -16,6 +19,9 @@ const STORAGE_KEY = "maison-elyra-favorites";
 export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [favoriteToast, setFavoriteToast] = useState(null);
+
+  const toastTimerRef = useRef(null);
 
   /* Charger les favoris depuis localStorage */
   useEffect(() => {
@@ -36,7 +42,7 @@ export function FavoritesProvider({ children }) {
     }
   }, []);
 
-  /* Sauvegarder les favoris */
+  /* Sauvegarder les favoris dans localStorage */
   useEffect(() => {
     if (!isLoaded) return;
 
@@ -46,9 +52,46 @@ export function FavoritesProvider({ children }) {
         JSON.stringify(favorites)
       );
     } catch (error) {
-      console.error("Impossible de sauvegarder les favoris :", error);
+      console.error(
+        "Impossible de sauvegarder les favoris :",
+        error
+      );
     }
   }, [favorites, isLoaded]);
+
+  /* Nettoyer le timer quand le provider est démonté */
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) {
+        clearTimeout(toastTimerRef.current);
+      }
+    };
+  }, []);
+
+  const showFavoriteToast = useCallback((product, action) => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
+
+    setFavoriteToast({
+      product,
+      action,
+    });
+
+    toastTimerRef.current = setTimeout(() => {
+      setFavoriteToast(null);
+      toastTimerRef.current = null;
+    }, 5000);
+  }, []);
+
+  const closeFavoriteToast = useCallback(() => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = null;
+    }
+
+    setFavoriteToast(null);
+  }, []);
 
   const isFavorite = useCallback(
     (productHref) => {
@@ -59,31 +102,43 @@ export function FavoritesProvider({ children }) {
     [favorites]
   );
 
-  const toggleFavorite = useCallback((product) => {
-    if (!product?.href) return;
-
-    setFavorites((currentFavorites) => {
-      const alreadyFavorite = currentFavorites.some(
+  const toggleFavorite = useCallback(
+    (product) => {
+      const productExists = favorites.some(
         (item) => item.href === product.href
       );
 
-      if (alreadyFavorite) {
-        return currentFavorites.filter(
-          (item) => item.href !== product.href
+      if (productExists) {
+        setFavorites((currentFavorites) =>
+          currentFavorites.filter(
+            (item) => item.href !== product.href
+          )
         );
+
+        showFavoriteToast(product, "removed");
+        return;
       }
 
-      return [...currentFavorites, product];
-    });
-  }, []);
+      setFavorites((currentFavorites) => [
+        ...currentFavorites,
+        product,
+      ]);
 
-  const removeFavorite = useCallback((productHref) => {
-    setFavorites((currentFavorites) =>
-      currentFavorites.filter(
-        (product) => product.href !== productHref
-      )
-    );
-  }, []);
+      showFavoriteToast(product, "added");
+    },
+    [favorites, showFavoriteToast]
+  );
+
+  const removeFavorite = useCallback(
+    (productHref) => {
+      setFavorites((currentFavorites) =>
+        currentFavorites.filter(
+          (product) => product.href !== productHref
+        )
+      );
+    },
+    []
+  );
 
   const clearFavorites = useCallback(() => {
     setFavorites([]);
@@ -112,6 +167,11 @@ export function FavoritesProvider({ children }) {
   return (
     <FavoritesContext.Provider value={value}>
       {children}
+
+      <FavoriteToast
+        toast={favoriteToast}
+        onClose={closeFavoriteToast}
+      />
     </FavoritesContext.Provider>
   );
 }

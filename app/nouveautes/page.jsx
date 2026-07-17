@@ -1,9 +1,8 @@
-import { getNouveautes } from "@/lib/shopify/products";
+import { getAllProducts } from "@/lib/shopify/products";
 import NouveautesClient from "./nouveautes-client";
-import styles from "./nouveautes.module.css";
 
-export default async function NouveautesPage() {
-  const products = await getNouveautes();
+export default async function BoutiquePage() {
+  const products = await getAllProducts();
 
   return <NouveautesClient products={products} />;
 }

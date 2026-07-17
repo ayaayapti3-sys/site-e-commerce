@@ -14,6 +14,7 @@ import { useFavorites } from "@/context/favorites-context";
 import styles from "./favoris.module.css";
 import Footer from "@/components/footer/footer";
 
+
 export default function FavorisPage() {
   const {
     favorites,
