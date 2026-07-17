@@ -141,6 +141,11 @@
 
 .heroVisual img {
   object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.heroVisual:hover img{
+  transform: scale(1.03);
 }
 
 .heroOverlay {
@@ -170,12 +175,12 @@
   justify-content: space-between;
   gap: 25px;
   padding: 17px 20px;
-  /* background: rgba(251, 248, 244, 0.86); */
-  /* backdrop-filter: blur(10px); */
+  background: rgba(251, 248, 244, 0.86);
+  backdrop-filter: blur(10px);
 }
 
 .imageLabel span {
-  color: var(--background);
+  color: var(--burgundy);
   font-size: 8px;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -184,7 +189,7 @@
 
 .imageLabel p {
   margin: 0;
-  color: var(--surface);
+  color: var(--muted);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;

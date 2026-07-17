@@ -88,9 +88,11 @@ export default function SandalesClient({ products }) {
 
             <div className={styles.heroImageOverlay} />
 
-            <span className={styles.imageNumber}>
-              Collection 03
-            </span>
+                       <div className={styles.imageLabel}>
+              <span>Maison Élyra</span>
+
+              <p>Collection de sandales</p>
+            </div>
           </div>
 
           <span className={styles.watermark} aria-hidden="true">

@@ -90,7 +90,7 @@ export default function BottesClient({ products }) {
 
             <div className={styles.imageLabel}>
               <span>Maison Élyra</span>
-              <p>Collection Automne · Hiver</p>
+              <p>Collection de bottes</p>
             </div>
           </div>
 

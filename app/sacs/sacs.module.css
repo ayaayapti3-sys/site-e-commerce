@@ -140,6 +140,10 @@
 
 .heroImage img {
   object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.heroImage:hover img{
+  transform: scale(1.03);
 }
 
 .heroOverlay {
@@ -875,3 +879,5 @@
     padding-top: 18px;
   }
 }
+
+

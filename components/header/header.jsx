@@ -15,7 +15,7 @@ import styles from "./header.module.css";
 import SearchPanel from "@/components/search/search";
 import { useFavorites } from "@/context/favorites-context";
 import { useCart } from "@/context/cart-context";
-import { MessageCircle } from "lucide-react";
+import { Send } from "lucide-react";
 import ContactModal from "@/components/contact-modal/contact-modal";
 
 export default function Header() {
@@ -63,7 +63,7 @@ export default function Header() {
                 <div className={styles.dropdownLinks}>
                   <Link href="/nouveautes">
                     <span>01</span>
-                    Nouveautés
+                    BOUTIQUE
                   </Link>
 
                   <Link href="/sacs">
@@ -120,7 +120,7 @@ export default function Header() {
   onClick={() => setIsContactOpen(true)}
   aria-label="Nous contacter"
 >
-  <MessageCircle size={22} strokeWidth={1.4} />
+  <Send size={22} strokeWidth={1.4} />
 </button>
 
             <button
@@ -205,7 +205,7 @@ export default function Header() {
               href="/nouveautes"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Nouveautés
+              Boutiques
             </Link>
 
             <Link href="/sacs" onClick={() => setMobileMenuOpen(false)}>
